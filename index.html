@@ -82,7 +82,7 @@ section{padding:110px 60px}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}  
 .about-visual{position:relative;height:560px}  
 .about-frame{position:absolute;inset:0;border:1px solid var(--border);overflow:hidden}  
-.about-frame img{width:100%;height:100%;object-fit:contain;object-position:center top;filter:brightness(.92) saturate(.95)}  
+.about-frame img{width:100%;height:100%;object-fit:contain;object-position:center center;filter:brightness(.92) saturate(.95)}  
 .about-accent{position:absolute;bottom:-18px;right:-18px;width:160px;height:160px;border:1px solid var(--gold);opacity:.18;pointer-events:none}  
 .about-accent2{position:absolute;top:-18px;left:-18px;width:90px;height:90px;border:1px solid var(--gold);opacity:.12;pointer-events:none}  
 .about-text p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:18px}  
@@ -335,7 +335,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:76px 60
 
 /* ── Service card gallery ────────────────────────────────────── */
 .svc-card { padding: 0; overflow: hidden; gap: 0; }
-.svc-gallery { position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden; background: #111; }
+.svc-gallery { position: relative; width: 100%; aspect-ratio: 3/2; overflow: hidden; background: #111; }
 .svc-gallery img, .svc-gallery .g-slide { width: 100%; height: 100%; object-fit: cover; display: block; }
 .svc-gallery--multi .g-slide { display: none; }
 .svc-gallery--multi .g-slide.active { display: block; }
@@ -381,6 +381,32 @@ p { font-size: 1rem; line-height: 1.75; }
 .form-group input, .form-group select, .form-group textarea { font-size: .95rem !important; }
 .svc-book-btn { font-size: .68rem !important; }
 .stab { font-size: .68rem !important; }
+
+
+/* ── Desktop: compact service card images ────────────────────── */
+@media(min-width: 901px) {
+  .svc-gallery { aspect-ratio: 16/9; }
+  .svc-card-body { padding: 16px 20px; }
+  .svc-grid { gap: 6px; }
+}
+
+/* ── About portrait: ensure full face visible ────────────────── */
+.about-visual { height: 500px; }
+@media(min-width: 901px) {
+  .about-visual { height: 580px; }
+  .about-frame img { object-fit: contain; object-position: center center; }
+}
+@media(max-width: 900px) {
+  .about-visual { height: 420px; }
+  .about-frame img { object-fit: cover; object-position: center top; }
+}
+
+
+/* ── Hide decorative accent squares on mobile (appear as black boxes) ── */
+@media(max-width: 900px) {
+  .about-accent, .about-accent2 { display: none; }
+  #about { padding: 70px 24px !important; }
+}
 
 </style>  
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
